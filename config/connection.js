@@ -17,6 +17,7 @@ const connection = mysql.createConnection({
       return;
     }
     console.log("connected as id " + connection.threadId);
+    console.log(port);
   });
   
   //Exporting connection
