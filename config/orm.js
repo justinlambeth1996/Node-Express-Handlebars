@@ -5,35 +5,39 @@ const connection = require("../config/connection");
 
 //Configure ORM to complete mysql functions
 var orm = {
-    selectAll: function(table, colToSearch, valOfCol) {
-      var queryString = "";
-      connection.query(queryString, [], function(err, result) {
-        if (err) throw err;
-        console.log(result);
-      });
-    },
-    insertOne: function() {
-      var queryString = "";
-      console.log(queryString);
-      connection.query(queryString, [], function(err, result) {
-        if (err) throw err;
-        console.log(result);
-      });
-    },
-    updateOne: function() {
-      var queryString =
-        "";
+  selectAll: function (table, cb) {
+    var queryString = "SELECT * FROM" + table;
+
+    connection.query(queryString, function (err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+
+  insertOne: function (table, colOne, burgerName) {
+    var queryString = "INSERT INTO " + table + "("+ cols +")"+ "VALUES("
+        queryString += value + ")"
+    console.log(queryString);
+
+    connection.query(queryString, function (err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+
+  updateOne: function (table, id) {
+    var queryString =
+      "UPDATE " + table;
+      queryString += " SET devoured = " + true;
+      queryString += " WHERE id = " + id;
   
-      connection.query(
-        queryString,
-        [],
-        function(err, result) {
-          if (err) throw err;
-          console.log(result);
-        }
-      );
-    }
-  };
-  
+
+    connection.query(queryString, function (err, result) {
+        if (err) throw err;
+        cb(result);
+      });
+  }
+};
+
 //Exporting ORM
 module.exports = orm;

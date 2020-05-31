@@ -7,7 +7,6 @@ var burger = {
         });
     },
 
-    //Adds customer order
     addOrder: function(col, val, cb) {
         orm.addOrder("orders", col, val, function(result) {
             cb(result);
