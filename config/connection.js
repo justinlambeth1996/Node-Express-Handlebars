@@ -4,11 +4,13 @@ const mysql = require("mysql");
 //Creating connection
 const connection = mysql.createConnection({
     host: "localhost",
-    port: 3000,
+    port: 3306,
     user: "root",
     password: "",
     database: "burgers_db"
   });
+
+  console.log(connection.port)
   
   //Console.log connection res
   connection.connect(function(err) {
@@ -17,7 +19,7 @@ const connection = mysql.createConnection({
       return;
     }
     console.log("connected as id " + connection.threadId);
-    console.log(port);
+
   });
   
   //Exporting connection

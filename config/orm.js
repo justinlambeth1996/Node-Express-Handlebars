@@ -6,7 +6,7 @@ const connection = require("../config/connection");
 //Configure ORM to complete mysql functions
 var orm = {
   selectAll: function (table, cb) {
-    var queryString = "SELECT * FROM" + table;
+    var queryString = "SELECT * FROM " + table;
 
     connection.query(queryString, function (err, result) {
       if (err) throw err;

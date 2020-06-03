@@ -8,17 +8,17 @@ const burger = require("../models/burger.js");
 //Create all routes
 
 router.get("/", function(req, res) {
-    burgers.all(function(data) {
+    burger.listAll(function(data) {
         var hbsObject = {
-            burgers: data
+            burger: data
         };
         console.log(hbsObject);
-        res.render(index, hbsObject);
+        res.render("index", hbsObject);
     });
 });
 
-router.post("/api/burgers", function(req, res) {
-    burger.create([
+router.post("/api/burger", function(req, res) {
+    burger.addOrder([
       "burger_name", "devoured"
     ], [
       req.body.burger_name, req.body.devoured
@@ -28,12 +28,12 @@ router.post("/api/burgers", function(req, res) {
     });
   });
 
-  router.put("/api/burgers/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
+  router.put("/api/burger/:id", function(req, res) {
+    var id = "id = " + req.params.id;
   
     console.log("condition", condition);
   
-    burger.update({
+    list.update({
         devoured: req.body.devoured
     }, condition, function(result) {
       if (result.changedRows == 0) {
