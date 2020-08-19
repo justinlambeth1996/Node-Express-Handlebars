@@ -1,6 +1,6 @@
 //Importing connection
 
-const connection = require("../config/connection");
+var connection = require("../config/connection.js");
 // Object Relational Mapper (ORM)
 
 //Configure ORM to complete mysql functions
